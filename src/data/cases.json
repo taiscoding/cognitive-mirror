@@ -1,0 +1,183 @@
+[
+  {
+    "id": "case_001",
+    "title": "Pulmonary Tuberculosis - Upper Lobe",
+    "image": "/images/MCUCXR_0113_1.png",
+    "fallbackImage": "https://raw.githubusercontent.com/taiscoding/cognitive-mirror-images/main/MCUCXR_0113_1.png",
+    "diagnosis": "tuberculosis",
+    "difficulty": "moderate",
+    "category": "Infectious Disease",
+    "description": "35-year-old patient with chronic cough and weight loss",
+    "annotations": [
+      {
+        "x": 245,
+        "y": 180,
+        "radius": 30,
+        "finding": "Upper lobe consolidation with cavitation",
+        "difficulty": "moderate",
+        "description": "Classic upper lobe TB presentation with thick-walled cavity"
+      },
+      {
+        "x": 280,
+        "y": 220,
+        "radius": 20,
+        "finding": "Satellite nodules",
+        "difficulty": "subtle",
+        "description": "Small nodular opacities surrounding main lesion"
+      }
+    ],
+    "learningPoints": [
+      "Upper lobe predilection is classic for pulmonary TB",
+      "Cavitation suggests active, transmissible disease",
+      "Satellite lesions indicate bronchogenic spread"
+    ],
+    "differentialDiagnoses": [
+      "Lung cancer",
+      "Bacterial pneumonia",
+      "Fungal infection",
+      "Lung abscess"
+    ],
+    "clinicalPearls": "Always consider TB in patients with upper lobe cavitary lesions, especially with systemic symptoms."
+  },
+  {
+    "id": "case_002",
+    "title": "Normal Chest X-ray",
+    "image": "/images/MCUCXR_0020_0.png",
+    "fallbackImage": "https://raw.githubusercontent.com/taiscoding/cognitive-mirror-images/main/MCUCXR_0020_0.png",
+    "diagnosis": "normal",
+    "difficulty": "easy",
+    "category": "Normal Anatomy",
+    "description": "22-year-old asymptomatic patient, routine screening",
+    "annotations": [],
+    "learningPoints": [
+      "Clear lung fields bilaterally",
+      "Normal cardiac silhouette",
+      "No acute cardiopulmonary abnormalities"
+    ],
+    "differentialDiagnoses": [],
+    "clinicalPearls": "Systematic review: airways, breathing, circulation, diaphragm, everything else."
+  },
+  {
+    "id": "case_003",
+    "title": "Bilateral Pulmonary Tuberculosis",
+    "image": "/images/MCUCXR_0104_1.png",
+    "fallbackImage": "https://raw.githubusercontent.com/taiscoding/cognitive-mirror-images/main/MCUCXR_0104_1.png",
+    "diagnosis": "tuberculosis",
+    "difficulty": "hard",
+    "category": "Infectious Disease",
+    "description": "42-year-old immunocompromised patient with fever and dyspnea",
+    "annotations": [
+      {
+        "x": 180,
+        "y": 150,
+        "radius": 25,
+        "finding": "Right upper lobe infiltrate",
+        "difficulty": "moderate",
+        "description": "Heterogeneous opacity with air bronchograms"
+      },
+      {
+        "x": 320,
+        "y": 160,
+        "radius": 20,
+        "finding": "Left upper lobe nodules",
+        "difficulty": "subtle",
+        "description": "Multiple small nodular opacities"
+      },
+      {
+        "x": 200,
+        "y": 280,
+        "radius": 15,
+        "finding": "Right lower lobe tree-in-bud",
+        "difficulty": "subtle",
+        "description": "Branching linear opacities suggesting endobronchial spread"
+      }
+    ],
+    "learningPoints": [
+      "Bilateral disease suggests hematogenous dissemination",
+      "Tree-in-bud pattern indicates endobronchial spread",
+      "Immunocompromised patients may have atypical presentations"
+    ],
+    "differentialDiagnoses": [
+      "Miliary tuberculosis",
+      "Bacterial pneumonia",
+      "Pneumocystis pneumonia",
+      "Viral pneumonia"
+    ],
+    "clinicalPearls": "Bilateral upper lobe disease with tree-in-bud pattern is highly suggestive of TB, especially in immunocompromised patients."
+  },
+  {
+    "id": "case_004",
+    "title": "Normal Chest X-ray - Variant",
+    "image": "/images/MCUCXR_0015_0.png",
+    "fallbackImage": "https://raw.githubusercontent.com/taiscoding/cognitive-mirror-images/main/MCUCXR_0015_0.png",
+    "diagnosis": "normal",
+    "difficulty": "easy",
+    "category": "Normal Anatomy",
+    "description": "28-year-old healthy patient, pre-employment screening",
+    "annotations": [],
+    "learningPoints": [
+      "Normal cardiomediastinal contours",
+      "Clear costophrenic angles",
+      "No evidence of acute disease"
+    ],
+    "differentialDiagnoses": [],
+    "clinicalPearls": "Remember to check for subtle pneumothorax by following the pleural line."
+  },
+  {
+    "id": "case_005",
+    "title": "Advanced Pulmonary Tuberculosis",
+    "image": "/images/MCUCXR_0140_1.png",
+    "fallbackImage": "https://raw.githubusercontent.com/taiscoding/cognitive-mirror-images/main/MCUCXR_0140_1.png",
+    "diagnosis": "tuberculosis",
+    "difficulty": "hard",
+    "category": "Infectious Disease",
+    "description": "55-year-old patient with 6-month history of chronic cough, hemoptysis, and significant weight loss",
+    "annotations": [
+      {
+        "x": 230,
+        "y": 140,
+        "radius": 40,
+        "finding": "Large cavitary lesion right upper lobe",
+        "difficulty": "moderate",
+        "description": "Thick-walled cavity with air-fluid level"
+      },
+      {
+        "x": 190,
+        "y": 200,
+        "radius": 25,
+        "finding": "Fibrocavitary changes",
+        "difficulty": "moderate",
+        "description": "Surrounding fibrosis and volume loss"
+      },
+      {
+        "x": 300,
+        "y": 180,
+        "radius": 15,
+        "finding": "Contralateral seeding",
+        "difficulty": "subtle",
+        "description": "Small nodular opacities in left lung"
+      },
+      {
+        "x": 250,
+        "y": 320,
+        "radius": 20,
+        "finding": "Pleural thickening",
+        "difficulty": "subtle",
+        "description": "Apical pleural thickening and scarring"
+      }
+    ],
+    "learningPoints": [
+      "Large cavities with air-fluid levels suggest active infection",
+      "Fibrocavitary changes indicate chronic, advanced disease",
+      "Contralateral seeding shows high infectious burden",
+      "Apical pleural scarring is classic for chronic TB"
+    ],
+    "differentialDiagnoses": [
+      "Lung cancer with necrosis",
+      "Lung abscess",
+      "Necrotizing pneumonia",
+      "Aspergilloma"
+    ],
+    "clinicalPearls": "Combination of cavitation, fibrosis, and contralateral disease suggests chronic, potentially drug-resistant TB."
+  }
+]

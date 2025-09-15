@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#1a1a1a"/>
+  
+  <!-- Chest outline -->
+  <ellipse cx="200" cy="300" rx="150" ry="80" fill="none" stroke="#666" stroke-width="2"/>
+  
+  <!-- Left lung -->
+  <ellipse cx="150" cy="200" rx="60" ry="100" fill="#333333" stroke="#555" stroke-width="1"/>
+  
+  <!-- Right lung -->
+  <ellipse cx="250" cy="200" rx="60" ry="100" fill="#333333" stroke="#555" stroke-width="1"/>
+  
+  <!-- Heart shadow -->
+  <ellipse cx="180" cy="280" rx="40" ry="60" fill="#2a2a2a" stroke="#555" stroke-width="1"/>
+  
+  <!-- Ribs -->
+  <path d="M 100 150 Q 200 120 300 150" stroke="#444" stroke-width="1" fill="none"/>
+  <path d="M 110 180 Q 200 150 290 180" stroke="#444" stroke-width="1" fill="none"/>
+  <path d="M 120 210 Q 200 180 280 210" stroke="#444" stroke-width="1" fill="none"/>
+  <path d="M 130 240 Q 200 210 270 240" stroke="#444" stroke-width="1" fill="none"/>
+  
+  
+  <!-- TB lesions for abnormal cases -->
+  <circle cx="180" cy="160" r="15" fill="#ff6b6b" opacity="0.7"/>
+  <circle cx="200" cy="180" r="8" fill="#ff6b6b" opacity="0.5"/>
+  <circle cx="160" cy="190" r="6" fill="#ff6b6b" opacity="0.6"/>
+  
+  
+  <!-- Placeholder text -->
+  <text x="200" y="380" text-anchor="middle" fill="#666" font-family="Arial" font-size="12">
+    MCUCXR_0017_1.png - TUBERCULOSIS PLACEHOLDER
+  </text>
+  <text x="200" y="395" text-anchor="middle" fill="#888" font-family="Arial" font-size="10">
+    Replace with Montgomery County dataset
+  </text>
+</svg>
