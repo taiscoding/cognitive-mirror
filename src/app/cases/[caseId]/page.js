@@ -70,7 +70,7 @@ export default function CasePage({ params }) {
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
           <div className="animate-spin w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-medical-gray">Loading case...</p>
+          <p className="text-pacs-text-muted">Loading case...</p>
         </div>
       </div>
     )

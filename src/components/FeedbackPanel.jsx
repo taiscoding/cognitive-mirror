@@ -43,7 +43,7 @@ export default function FeedbackPanel({
     if (seconds < 30) return { text: 'Very Fast', color: 'bg-blue-100 text-blue-700' }
     if (seconds < 60) return { text: 'Fast', color: 'bg-green-100 text-green-700' }
     if (seconds < 120) return { text: 'Moderate', color: 'bg-yellow-100 text-yellow-700' }
-    return { text: 'Deliberate', color: 'bg-gray-100 text-gray-700' }
+    return { text: 'Deliberate', color: 'bg-pacs-elevated text-pacs-text' }
   }
 
   const speedBadge = getSpeedBadge(completionTime)
@@ -52,7 +52,7 @@ export default function FeedbackPanel({
     <div className="space-y-6">
       {/* Performance Summary */}
       <div className="card">
-        <h3 className="text-lg font-semibold text-medical-dark mb-4">
+        <h3 className="text-lg font-semibold text-pacs-text mb-4">
           Performance Summary
         </h3>
         
@@ -74,21 +74,21 @@ export default function FeedbackPanel({
 
           {/* Speed and Difficulty */}
           <div className="grid grid-cols-2 gap-4">
-            <div className="text-center p-3 bg-gray-50 rounded-lg">
-              <div className="text-sm text-medical-gray">Completion Time</div>
-              <div className="text-lg font-semibold text-medical-dark">
+            <div className="text-center p-3 bg-pacs-elevated rounded-lg">
+              <div className="text-sm text-pacs-text-muted">Completion Time</div>
+              <div className="text-lg font-semibold text-pacs-text">
                 {formatTime(completionTime)}
               </div>
               <span className={`text-xs px-2 py-1 rounded ${speedBadge.color}`}>
                 {speedBadge.text}
               </span>
             </div>
-            <div className="text-center p-3 bg-gray-50 rounded-lg">
-              <div className="text-sm text-medical-gray">Case Difficulty</div>
-              <div className="text-lg font-semibold text-medical-dark">
+            <div className="text-center p-3 bg-pacs-elevated rounded-lg">
+              <div className="text-sm text-pacs-text-muted">Case Difficulty</div>
+              <div className="text-lg font-semibold text-pacs-text">
                 {feedback.difficulty}%
               </div>
-              <span className="text-xs text-medical-gray">
+              <span className="text-xs text-pacs-text-muted">
                 {caseData.difficulty}
               </span>
             </div>
@@ -108,7 +108,7 @@ export default function FeedbackPanel({
 
       {/* Detailed Analysis */}
       <div className="card">
-        <h4 className="font-semibold text-medical-dark mb-3">
+        <h4 className="font-semibold text-pacs-text mb-3">
           Detailed Analysis
         </h4>
         
@@ -116,7 +116,7 @@ export default function FeedbackPanel({
           {/* Correct Findings */}
           {caseData.annotations.length > 0 && (
             <div>
-              <h5 className="font-medium text-medical-dark mb-2">
+              <h5 className="font-medium text-pacs-text mb-2">
                 Expected Findings ({caseData.annotations.length})
               </h5>
               <div className="space-y-2">
@@ -142,7 +142,7 @@ export default function FeedbackPanel({
 
           {/* Your Performance */}
           <div>
-            <h5 className="font-medium text-medical-dark mb-2">
+            <h5 className="font-medium text-pacs-text mb-2">
               Your Annotations ({userAnnotations.length})
             </h5>
             {userAnnotations.length > 0 ? (
@@ -159,7 +159,7 @@ export default function FeedbackPanel({
                 ))}
               </div>
             ) : (
-              <div className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center text-gray-600">
+              <div className="p-3 bg-pacs-elevated rounded-lg border border-pacs-border text-center text-pacs-text-muted">
                 No findings marked - interpreted as normal study
               </div>
             )}
@@ -170,14 +170,14 @@ export default function FeedbackPanel({
       {/* Learning Points */}
       {caseData.learningPoints && caseData.learningPoints.length > 0 && (
         <div className="card">
-          <h4 className="font-semibold text-medical-dark mb-3">
+          <h4 className="font-semibold text-pacs-text mb-3">
             Key Learning Points
           </h4>
           <ul className="space-y-2">
             {caseData.learningPoints.map((point, index) => (
               <li key={index} className="flex items-start space-x-2">
                 <span className="text-primary-500 mt-1">•</span>
-                <span className="text-sm text-medical-dark">{point}</span>
+                <span className="text-sm text-pacs-text">{point}</span>
               </li>
             ))}
           </ul>
@@ -199,12 +199,12 @@ export default function FeedbackPanel({
       {/* Differential Diagnoses */}
       {caseData.differentialDiagnoses && caseData.differentialDiagnoses.length > 0 && (
         <div className="card">
-          <h4 className="font-semibold text-medical-dark mb-3">
+          <h4 className="font-semibold text-pacs-text mb-3">
             Differential Diagnoses
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {caseData.differentialDiagnoses.map((diagnosis, index) => (
-              <div key={index} className="px-3 py-2 bg-gray-100 rounded text-sm text-medical-dark">
+              <div key={index} className="px-3 py-2 bg-pacs-elevated rounded text-sm text-pacs-text">
                 {diagnosis}
               </div>
             ))}
@@ -230,9 +230,9 @@ export default function FeedbackPanel({
               {recommendedCase.difficulty}
             </span>
           </div>
-          <div className="bg-white rounded-lg p-3 border border-indigo-200">
-            <h5 className="font-medium text-medical-dark mb-1">{recommendedCase.title}</h5>
-            <p className="text-sm text-medical-gray mb-3">{recommendedCase.description}</p>
+          <div className="bg-pacs-surface rounded-lg p-3 border border-indigo-200">
+            <h5 className="font-medium text-pacs-text mb-1">{recommendedCase.title}</h5>
+            <p className="text-sm text-pacs-text-muted mb-3">{recommendedCase.description}</p>
             <Link href={`/cases/${recommendedCase.id}`}>
               <button className="btn-primary w-full">
                 Start This Case →

@@ -25,10 +25,10 @@ export default function ProgressDashboard({
     <div className="card animate-slide-up">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-medical-gray">{title}</p>
+          <p className="text-sm font-medium text-pacs-text-muted">{title}</p>
           <p className={`text-2xl font-bold text-${color}-600`}>{value}</p>
           {subtitle && (
-            <p className="text-sm text-medical-gray mt-1">{subtitle}</p>
+            <p className="text-sm text-pacs-text-muted mt-1">{subtitle}</p>
           )}
         </div>
         {trend && (
@@ -46,8 +46,8 @@ export default function ProgressDashboard({
   const ProgressBar = ({ label, value, max = 1, color = "primary" }) => (
     <div className="space-y-2">
       <div className="flex justify-between text-sm">
-        <span className="font-medium text-medical-dark">{label}</span>
-        <span className="text-medical-gray">{formatPercentage(value)}</span>
+        <span className="font-medium text-pacs-text">{label}</span>
+        <span className="text-pacs-text-muted">{formatPercentage(value)}</span>
       </div>
       <div className="progress-bar">
         <div 
@@ -64,10 +64,10 @@ export default function ProgressDashboard({
       <div className="space-y-8">
         {/* Header */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-medical-dark mb-2">
+          <h1 className="text-3xl font-bold text-pacs-text mb-2">
             Welcome to Your Dashboard
           </h1>
-          <p className="text-medical-gray">
+          <p className="text-pacs-text-muted">
             Start practicing to see your diagnostic skills improve in real-time
           </p>
         </div>
@@ -80,10 +80,10 @@ export default function ProgressDashboard({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-medical-dark mb-4">
+            <h2 className="text-2xl font-bold text-pacs-text mb-4">
               Begin Diagnostic Training
             </h2>
-            <p className="text-lg text-medical-gray mb-8">
+            <p className="text-lg text-pacs-text-muted mb-8">
               Complete your first case to unlock real-time performance analytics and 
               quantified diagnostic accuracy metrics.
             </p>
@@ -103,8 +103,8 @@ export default function ProgressDashboard({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
             </div>
-            <h3 className="font-semibold text-medical-dark mb-2">Track Progress</h3>
-            <p className="text-sm text-medical-gray">
+            <h3 className="font-semibold text-pacs-text mb-2">Track Progress</h3>
+            <p className="text-sm text-pacs-text-muted">
               Monitor accuracy, speed, and improvement trends over time
             </p>
           </div>
@@ -114,8 +114,8 @@ export default function ProgressDashboard({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 className="font-semibold text-medical-dark mb-2">Receive Insights</h3>
-            <p className="text-sm text-medical-gray">
+            <h3 className="font-semibold text-pacs-text mb-2">Receive Insights</h3>
+            <p className="text-sm text-pacs-text-muted">
               AI-powered feedback on diagnostic patterns and performance
             </p>
           </div>
@@ -125,8 +125,8 @@ export default function ProgressDashboard({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
               </svg>
             </div>
-            <h3 className="font-semibold text-medical-dark mb-2">Advance Skills</h3>
-            <p className="text-sm text-medical-gray">
+            <h3 className="font-semibold text-pacs-text mb-2">Advance Skills</h3>
+            <p className="text-sm text-pacs-text-muted">
               Measurable skill level progression with quantified metrics
             </p>
           </div>
@@ -134,7 +134,7 @@ export default function ProgressDashboard({
 
         {/* Quick Start Guide */}
         <div className="card">
-          <h3 className="text-lg font-semibold text-medical-dark mb-4">
+          <h3 className="text-lg font-semibold text-pacs-text mb-4">
             How It Works
           </h3>
           <div className="space-y-4">
@@ -143,8 +143,8 @@ export default function ProgressDashboard({
                 1
               </div>
               <div>
-                <h4 className="font-medium text-medical-dark">Choose a Case</h4>
-                <p className="text-sm text-medical-gray">Select from curated radiology cases across difficulty levels</p>
+                <h4 className="font-medium text-pacs-text">Choose a Case</h4>
+                <p className="text-sm text-pacs-text-muted">Select from curated radiology cases across difficulty levels</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -152,8 +152,8 @@ export default function ProgressDashboard({
                 2
               </div>
               <div>
-                <h4 className="font-medium text-medical-dark">Annotate Findings</h4>
-                <p className="text-sm text-medical-gray">Click on the X-ray to mark abnormal findings you identify</p>
+                <h4 className="font-medium text-pacs-text">Annotate Findings</h4>
+                <p className="text-sm text-pacs-text-muted">Click on the X-ray to mark abnormal findings you identify</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -161,8 +161,8 @@ export default function ProgressDashboard({
                 3
               </div>
               <div>
-                <h4 className="font-medium text-medical-dark">Get Instant Feedback</h4>
-                <p className="text-sm text-medical-gray">See accuracy scores, correct findings, and clinical pearls immediately</p>
+                <h4 className="font-medium text-pacs-text">Get Instant Feedback</h4>
+                <p className="text-sm text-pacs-text-muted">See accuracy scores, correct findings, and clinical pearls immediately</p>
               </div>
             </div>
             <div className="flex items-start space-x-4">
@@ -170,8 +170,8 @@ export default function ProgressDashboard({
                 4
               </div>
               <div>
-                <h4 className="font-medium text-medical-dark">Track Your Growth</h4>
-                <p className="text-sm text-medical-gray">Return here to see your improvement trends and performance insights</p>
+                <h4 className="font-medium text-pacs-text">Track Your Growth</h4>
+                <p className="text-sm text-pacs-text-muted">Return here to see your improvement trends and performance insights</p>
               </div>
             </div>
           </div>
@@ -184,10 +184,10 @@ export default function ProgressDashboard({
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-medical-dark mb-2">
+        <h1 className="text-3xl font-bold text-pacs-text mb-2">
           Your Performance Dashboard
         </h1>
-        <p className="text-medical-gray">
+        <p className="text-pacs-text-muted">
           Track your diagnostic skill development with real-time analytics
         </p>
       </div>
@@ -226,7 +226,7 @@ export default function ProgressDashboard({
       {/* Recent Performance */}
       {recentPerformance.length > 0 && (
         <div className="card">
-          <h3 className="text-lg font-semibold text-medical-dark mb-4">
+          <h3 className="text-lg font-semibold text-pacs-text mb-4">
             Recent Performance
           </h3>
           <div className="space-y-4">
@@ -254,13 +254,13 @@ export default function ProgressDashboard({
       {/* Performance Insights */}
       {insights.length > 0 && (
         <div className="card">
-          <h3 className="text-lg font-semibold text-medical-dark mb-4">
+          <h3 className="text-lg font-semibold text-pacs-text mb-4">
             Performance Insights
           </h3>
           <div className="space-y-3">
             {insights.map((insight, index) => (
               <div key={index} className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
-                <div className="text-sm text-medical-dark">{insight}</div>
+                <div className="text-sm text-pacs-text">{insight}</div>
               </div>
             ))}
           </div>
@@ -270,14 +270,14 @@ export default function ProgressDashboard({
       {/* Recent Cases Grid */}
       {recentPerformance.length > 0 && (
         <div className="card">
-          <h3 className="text-lg font-semibold text-medical-dark mb-4">
+          <h3 className="text-lg font-semibold text-pacs-text mb-4">
             Latest Cases ({recentPerformance.length})
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {recentPerformance.map((perf, index) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+              <div key={index} className="border border-pacs-border rounded-lg p-4 bg-pacs-elevated">
                 <div className="flex justify-between items-start mb-2">
-                  <span className="text-sm font-medium text-medical-gray">
+                  <span className="text-sm font-medium text-pacs-text-muted">
                     Case {perf.caseId.replace('case_', '')}
                   </span>
                   <span className={`text-sm px-2 py-1 rounded ${
@@ -288,7 +288,7 @@ export default function ProgressDashboard({
                     {formatPercentage(perf.accuracy)}
                   </span>
                 </div>
-                <div className="text-xs text-medical-gray">
+                <div className="text-xs text-pacs-text-muted">
                   {formatTime(perf.completionTime)} • {perf.annotations} annotations
                 </div>
               </div>
@@ -306,7 +306,7 @@ export default function ProgressDashboard({
             {totalCases === 0 ? 'Start Your First Case' : 'Continue Practice'}
           </button>
         </Link>
-        <p className="text-sm text-medical-gray mt-2">
+        <p className="text-sm text-pacs-text-muted mt-2">
           {totalCases === 0 
             ? 'Begin your diagnostic skill development journey' 
             : 'Keep building your diagnostic expertise'

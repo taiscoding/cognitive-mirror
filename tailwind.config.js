@@ -28,6 +28,20 @@ module.exports = {
           success: '#10b981',
           warning: '#f59e0b',
           error: '#ef4444'
+        },
+        // Professional radiology dark theme
+        pacs: {
+          bg: '#0a0e14',           // Deep dark background (like PACS workstations)
+          surface: '#141922',      // Card/surface background
+          elevated: '#1c222e',     // Elevated elements
+          border: '#2d3748',       // Subtle borders
+          text: '#e2e8f0',         // Primary text
+          'text-muted': '#94a3b8', // Secondary text
+          accent: '#3b82f6',       // Blue accent (clinical standard)
+          success: '#10b981',      // Success green
+          warning: '#f59e0b',      // Warning amber
+          error: '#ef4444',        // Error red
+          highlight: '#1e40af'     // Highlighted elements
         }
       },
       fontFamily: {
