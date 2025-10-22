@@ -38,14 +38,14 @@ export default function Home() {
           {/* Hero Section */}
           <div 
             ref={heroRef}
-            className="text-center mb-16 animate-fade-in"
+            className="text-center mb-16 animate-fade-in px-6 py-8 rounded-2xl bg-pacs-bg/30 backdrop-blur-sm"
             style={{
               transform: `translateY(${scrollY * 0.3}px)`,
               opacity: Math.max(0, 1 - scrollY / 500),
               transition: 'transform 0.1s ease-out'
             }}
           >
-          <div className="inline-block mb-6 px-4 py-2 bg-pacs-elevated/90 border border-pacs-accent/30 rounded-full backdrop-blur-md">
+          <div className="inline-block mb-6 px-4 py-2 bg-pacs-elevated/95 border border-pacs-accent/40 rounded-full backdrop-blur-md">
             <span className="text-sm font-medium text-pacs-accent">
               AI-Powered Adaptive Learning
             </span>
@@ -113,7 +113,7 @@ export default function Home() {
             transition: 'all 0.3s ease-out'
           }}
         >
-          <div className="text-center">
+          <div className="text-center px-6 py-8 rounded-xl bg-pacs-bg/25 backdrop-blur-sm">
             <h3 className="text-2xl font-light text-pacs-text mb-3 tracking-tight">
               Real-Time Analytics
             </h3>
@@ -123,7 +123,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center px-6 py-8 rounded-xl bg-pacs-bg/25 backdrop-blur-sm">
             <h3 className="text-2xl font-light text-pacs-text mb-3 tracking-tight">
               Adaptive Learning
             </h3>
@@ -133,7 +133,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="text-center">
+          <div className="text-center px-6 py-8 rounded-xl bg-pacs-bg/25 backdrop-blur-sm">
             <h3 className="text-2xl font-light text-pacs-text mb-3 tracking-tight">
               Immediate Feedback
             </h3>
@@ -145,7 +145,7 @@ export default function Home() {
         </div>
 
         {/* The Problem/Solution */}
-        <div className="max-w-4xl mx-auto text-center mb-32 mt-16">
+        <div className="max-w-4xl mx-auto text-center mb-32 mt-16 px-8 py-12 rounded-2xl bg-pacs-bg/30 backdrop-blur-sm">
           <h2 className="text-4xl md:text-5xl font-extralight text-pacs-text mb-8 tracking-tighter leading-tight">
             Traditional radiology training lacks objective feedback
           </h2>
