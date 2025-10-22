@@ -50,8 +50,8 @@ export default function PixelatedBackground() {
       const cols = Math.ceil(window.innerWidth / pixelSize)
       const rows = Math.ceil(window.innerHeight / pixelSize)
 
-      // Create a recognizable impressionist scene (water lilies on a pond)
-      // Even when pixelated, the composition should be identifiable
+      // Create Monet's Water Lilies composition: weeping willows, reflections, lily pads
+      // Match the reference image's vertical composition and color palette
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const xPos = x * pixelSize
@@ -60,47 +60,64 @@ export default function PixelatedBackground() {
           const xNorm = x / cols
           const yNorm = y / rows
           
-          // Create distinct zones that are recognizable even when pixelated
           let r, g, b
           
-          // Top third: Light sky reflection (light blues/cyans)
-          if (yNorm < 0.25) {
-            const skyVariation = Math.sin(xNorm * 6) * 0.15 + Math.cos(yNorm * 8) * 0.1
-            r = Math.floor(50 + skyVariation * 40)
-            g = Math.floor(80 + skyVariation * 50)
-            b = Math.floor(120 + skyVariation * 60)
+          // Weeping willow branches hanging from top (like Monet's composition)
+          const isWillow = (yNorm < 0.35 && (
+            (xNorm < 0.25 && Math.sin(yNorm * 30 + xNorm * 8) > 0.4) ||
+            (xNorm > 0.75 && Math.sin(yNorm * 30 - xNorm * 8) > 0.4)
+          ))
+          
+          // Lily pad clusters (concentrated in lower-middle, like Monet)
+          const lilyPadPattern = Math.sin(xNorm * 20) * Math.cos(yNorm * 15)
+          const isLilyPad = (yNorm > 0.4 && yNorm < 0.75 && lilyPadPattern > 0.2)
+          
+          // Pink flowers scattered on lily pads
+          const isPinkFlower = (isLilyPad && 
+            Math.sin(xNorm * 50) * Math.cos(yNorm * 50) > 0.7 &&
+            Math.random() > 0.7) // Add some randomness for natural placement
+          
+          if (isWillow) {
+            // Dark green willow branches with blue-green reflections
+            r = Math.floor(20 + Math.sin(yNorm * 20) * 30)
+            g = Math.floor(90 + Math.cos(xNorm * 15) * 40)
+            b = Math.floor(70 + Math.sin((xNorm + yNorm) * 10) * 30)
           }
-          // Upper-middle: Distant lily pads (teal/green transition)
-          else if (yNorm < 0.45) {
-            const lilyDots = (Math.sin(xNorm * 25) * Math.cos(yNorm * 20) > 0.3) ? 1.3 : 1
-            r = Math.floor(40 * lilyDots + Math.sin(xNorm * 10) * 20)
-            g = Math.floor(95 * lilyDots + Math.cos(yNorm * 12) * 25)
-            b = Math.floor(80 * lilyDots)
+          else if (isPinkFlower) {
+            // Pink/magenta water lily flowers
+            r = Math.floor(200 + Math.sin(xNorm * 40) * 30)
+            g = Math.floor(110 + Math.cos(yNorm * 40) * 40)
+            b = Math.floor(160 + Math.sin((xNorm - yNorm) * 30) * 30)
           }
-          // Middle: Main lily pad cluster (vibrant greens with pink flowers)
-          else if (yNorm < 0.65) {
-            // Create circular lily pad shapes
-            const centerDist = Math.sqrt(Math.pow((xNorm - 0.5) * 2, 2) + Math.pow((yNorm - 0.55) * 2, 2))
-            const isFlower = (centerDist < 0.3 && Math.sin(xNorm * 40) * Math.cos(yNorm * 40) > 0.5)
-            
-            if (isFlower) {
-              // Pink/white flowers
-              r = Math.floor(180 + Math.sin(xNorm * 30) * 40)
-              g = Math.floor(100 + Math.cos(yNorm * 30) * 50)
-              b = Math.floor(140)
-            } else {
-              // Green lily pads
-              r = Math.floor(35 + Math.sin(xNorm * 15) * 25)
-              g = Math.floor(110 + Math.cos(yNorm * 18) * 30)
-              b = Math.floor(65 + Math.sin((xNorm + yNorm) * 12) * 20)
-            }
+          else if (isLilyPad) {
+            // Rich green lily pads with yellow-green highlights
+            r = Math.floor(40 + Math.sin(xNorm * 25) * 50)
+            g = Math.floor(120 + Math.cos(yNorm * 20) * 60)
+            b = Math.floor(55 + Math.sin((xNorm + yNorm) * 18) * 35)
           }
-          // Lower section: Deep water with reflections (dark blue/purple)
           else {
-            const waterRipple = Math.sin(xNorm * 12 + yNorm * 8) * 0.2
-            r = Math.floor(25 + waterRipple * 30)
-            g = Math.floor(45 + waterRipple * 35)
-            b = Math.floor(85 + waterRipple * 50 + Math.cos(xNorm * 15) * 25)
+            // Water with sky reflections (blues, cyans, soft purples)
+            // Upper water: lighter reflections
+            if (yNorm < 0.4) {
+              const reflection = Math.sin(xNorm * 8 + yNorm * 6) * 0.3
+              r = Math.floor(80 + reflection * 50 + Math.sin(xNorm * 12) * 30)
+              g = Math.floor(130 + reflection * 60 + Math.cos(yNorm * 10) * 40)
+              b = Math.floor(150 + reflection * 70)
+            }
+            // Middle water: medium tones with green reflections
+            else if (yNorm < 0.7) {
+              const waterFlow = Math.sin(xNorm * 10 + yNorm * 8) * 0.25
+              r = Math.floor(50 + waterFlow * 60 + Math.sin(xNorm * 15) * 25)
+              g = Math.floor(105 + waterFlow * 65 + Math.cos(yNorm * 12) * 35)
+              b = Math.floor(120 + waterFlow * 60)
+            }
+            // Lower water: deeper blues and purples
+            else {
+              const deepWater = Math.sin(xNorm * 12 - yNorm * 10) * 0.2
+              r = Math.floor(40 + deepWater * 45)
+              g = Math.floor(85 + deepWater * 55 + Math.sin(xNorm * 18) * 30)
+              b = Math.floor(110 + deepWater * 65 + Math.cos(yNorm * 15) * 35)
+            }
           }
           
           ctx.fillStyle = `rgb(${r}, ${g}, ${b})`

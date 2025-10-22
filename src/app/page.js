@@ -34,7 +34,7 @@ export default function Home() {
     <>
       <PixelatedBackground />
       <div className="relative min-h-[calc(100vh-200px)] flex items-center" style={{ zIndex: 1 }}>
-        <div className="w-full max-w-6xl mx-auto px-4">
+        <div className="w-full max-w-7xl mx-auto px-8">
           {/* Hero Section */}
           <div 
             ref={heroRef}
@@ -51,7 +51,7 @@ export default function Home() {
             </span>
           </div>
           
-          <h1 className="text-7xl md:text-8xl lg:text-9xl font-extralight text-pacs-text mb-12 leading-tight tracking-tighter">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-extralight text-pacs-text mb-12 leading-tight tracking-tighter">
             From <span className="text-gradient bg-clip-text font-light">Pixel</span>
             <br />
             <span className="text-pacs-text-muted font-thin"> to </span>
