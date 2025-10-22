@@ -33,9 +33,9 @@ export default function FeedbackPanel({
   }, [caseData.id, accuracy])
 
   const getAccuracyColor = (acc) => {
-    if (acc >= 80) return 'text-green-600 bg-green-50 border-green-200'
-    if (acc >= 60) return 'text-yellow-600 bg-yellow-50 border-yellow-200'
-    return 'text-red-600 bg-red-50 border-red-200'
+    if (acc >= 80) return 'text-green-400 bg-pacs-elevated border-green-900/30'
+    if (acc >= 60) return 'text-yellow-400 bg-pacs-elevated border-yellow-900/30'
+    return 'text-red-400 bg-pacs-elevated border-red-900/30'
   }
 
   const getSpeedBadge = (timeInMs) => {
@@ -121,11 +121,11 @@ export default function FeedbackPanel({
               </h5>
               <div className="space-y-2">
                 {caseData.annotations.map((ann, index) => (
-                  <div key={index} className="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                  <div key={index} className="flex items-start space-x-3 p-3 bg-pacs-elevated rounded-lg border border-green-900/30">
                     <div className="w-3 h-3 bg-green-500 rounded-full mt-1 flex-shrink-0"></div>
                     <div className="flex-1">
-                      <div className="font-medium text-green-900">{ann.finding}</div>
-                      <div className="text-sm text-green-700">{ann.description}</div>
+                      <div className="font-medium text-green-400">{ann.finding}</div>
+                      <div className="text-sm text-green-300/80">{ann.description}</div>
                       <span className={`inline-block mt-1 text-xs px-2 py-1 rounded ${
                         ann.difficulty === 'subtle' ? 'bg-red-100 text-red-700' :
                         ann.difficulty === 'moderate' ? 'bg-yellow-100 text-yellow-700' :
@@ -148,10 +148,10 @@ export default function FeedbackPanel({
             {userAnnotations.length > 0 ? (
               <div className="space-y-2">
                 {userAnnotations.map((ann, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-3 bg-red-50 rounded-lg border border-red-200">
+                  <div key={index} className="flex items-center space-x-3 p-3 bg-pacs-elevated rounded-lg border border-red-900/30">
                     <div className="w-3 h-3 bg-red-500 rounded-full flex-shrink-0"></div>
                     <div className="flex-1">
-                      <div className="text-sm text-red-700">
+                      <div className="text-sm text-red-400">
                         Finding at coordinates ({ann.x}, {ann.y})
                       </div>
                     </div>

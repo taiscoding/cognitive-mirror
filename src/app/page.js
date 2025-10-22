@@ -197,10 +197,10 @@ export default function Home() {
           </p>
           <Link href="/cases">
             <button className="btn-primary text-lg px-8 py-4">
-              {stats.hasData ? 'Practice More Cases' : 'Start Learning Now'} →
+              {stats.hasData ? 'Practice More Cases' : 'Start Learning Now'}
             </button>
           </Link>
-          </div>
+        </div>
         </div>
       </div>
     </>

@@ -34,45 +34,61 @@ export default function PixelatedBackground() {
     ctx.scale(dpr, dpr)
 
     // Calculate pixel size based on scroll progress
-    // Start very pixelated (20px blocks), end at 1px (clear)
-    const maxPixelSize = 24
+    // Start very pixelated (32px blocks), end at 1px (clear) as you scroll DOWN
+    const maxPixelSize = 32
     const minPixelSize = 1
     const pixelSize = Math.max(
       minPixelSize,
-      maxPixelSize - (maxPixelSize - minPixelSize) * scrollProgress
+      maxPixelSize * (1 - scrollProgress)  // Inverted: starts at max, decreases to min
     )
 
-    // Create medical imaging gradient pattern
-    const drawPixelatedGradient = () => {
+    // Create pixelated image from artwork
+    const drawPixelatedImage = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       
       const cols = Math.ceil(window.innerWidth / pixelSize)
       const rows = Math.ceil(window.innerHeight / pixelSize)
 
+      // Create an impressionist-style pattern (inspired by Monet's water lilies)
+      // Using procedural generation to create an artwork-like appearance
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          // Create a radial gradient pattern (like radiology images)
-          const centerX = window.innerWidth / 2
-          const centerY = window.innerHeight / 2
           const xPos = x * pixelSize
           const yPos = y * pixelSize
           
-          const distance = Math.sqrt(
-            Math.pow(xPos - centerX, 2) + Math.pow(yPos - centerY, 2)
-          )
-          const maxDistance = Math.sqrt(
-            Math.pow(centerX, 2) + Math.pow(centerY, 2)
-          )
+          // Create organic flowing patterns like water lilies
+          const xNorm = x / cols
+          const yNorm = y / rows
           
-          // Create subtle pattern
-          const normalizedDistance = distance / maxDistance
-          const wave = Math.sin(x * 0.1) * Math.cos(y * 0.1) * 0.1
-          const brightness = 0.05 + (0.95 - normalizedDistance * 0.5) * scrollProgress + wave
+          // Layered noise for organic feel
+          const wave1 = Math.sin(xNorm * 8 + yNorm * 3) * 0.5
+          const wave2 = Math.cos(xNorm * 4 - yNorm * 6) * 0.3
+          const wave3 = Math.sin((xNorm + yNorm) * 10) * 0.2
+          const combinedWave = (wave1 + wave2 + wave3) * 0.5 + 0.5
           
-          // Color based on position and scroll (clinical blue tones)
-          const r = Math.floor(10 + brightness * 40)
-          const g = Math.floor(14 + brightness * 50)
-          const b = Math.floor(20 + brightness * 80)
+          // Create impressionist color palette (blues, greens, soft purples)
+          // Top portion: sky/water (blues, cyans)
+          // Middle: water lilies (greens, soft pinks)
+          // Bottom: deeper water (darker blues, purples)
+          
+          let r, g, b
+          if (yNorm < 0.3) {
+            // Sky/upper water - soft blues and cyans
+            r = Math.floor(20 + combinedWave * 60 + Math.sin(xNorm * 15) * 20)
+            g = Math.floor(40 + combinedWave * 80 + Math.cos(yNorm * 10) * 30)
+            b = Math.floor(60 + combinedWave * 100)
+          } else if (yNorm < 0.7) {
+            // Middle - lily pads (greens, aquas, soft pinks)
+            const lilyPattern = Math.sin(xNorm * 20) * Math.cos(yNorm * 15)
+            r = Math.floor(30 + combinedWave * 50 + lilyPattern * 40)
+            g = Math.floor(50 + combinedWave * 90 + Math.sin(xNorm * 12) * 30)
+            b = Math.floor(40 + combinedWave * 70)
+          } else {
+            // Bottom - deeper water (darker blues, purples)
+            r = Math.floor(15 + combinedWave * 40)
+            g = Math.floor(25 + combinedWave * 50)
+            b = Math.floor(45 + combinedWave * 85 + Math.cos(xNorm * 8) * 20)
+          }
           
           ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
           ctx.fillRect(xPos, yPos, pixelSize, pixelSize)
@@ -80,7 +96,7 @@ export default function PixelatedBackground() {
       }
     }
 
-    drawPixelatedGradient()
+    drawPixelatedImage()
 
     // Redraw on resize
     const handleResize = () => {
@@ -89,7 +105,7 @@ export default function PixelatedBackground() {
       canvas.style.width = `${window.innerWidth}px`
       canvas.style.height = `${window.innerHeight}px`
       ctx.scale(dpr, dpr)
-      drawPixelatedGradient()
+      drawPixelatedImage()
     }
 
     window.addEventListener('resize', handleResize)
@@ -100,7 +116,7 @@ export default function PixelatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.3 }}
+      style={{ zIndex: 0, opacity: 0.25 }}
     />
   )
 }

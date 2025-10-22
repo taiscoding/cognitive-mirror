@@ -259,7 +259,7 @@ export default function ProgressDashboard({
           </h3>
           <div className="space-y-3">
             {insights.map((insight, index) => (
-              <div key={index} className="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
+              <div key={index} className="flex items-start space-x-3 p-3 bg-pacs-elevated border border-pacs-border rounded-lg">
                 <div className="text-sm text-pacs-text">{insight}</div>
               </div>
             ))}

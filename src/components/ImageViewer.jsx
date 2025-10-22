@@ -186,15 +186,15 @@ export default function ImageViewer({
           {/* Progress Indicators */}
           {isAnnotating && (
             <div className="flex items-center space-x-4 ml-4">
-              <div className="text-center px-4 py-2 bg-blue-50 rounded-lg border border-blue-200">
-                <div className="text-xs text-blue-600 font-medium">Time</div>
-                <div className="text-lg font-bold text-blue-700 font-mono">
+              <div className="text-center px-4 py-2 bg-pacs-elevated rounded-lg border border-pacs-accent/30">
+                <div className="text-xs text-pacs-accent font-medium">Time</div>
+                <div className="text-lg font-bold text-pacs-text font-mono">
                   {formatElapsedTime(elapsedTime)}
                 </div>
               </div>
-              <div className="text-center px-4 py-2 bg-purple-50 rounded-lg border border-purple-200">
-                <div className="text-xs text-purple-600 font-medium">Findings</div>
-                <div className="text-lg font-bold text-purple-700">
+              <div className="text-center px-4 py-2 bg-pacs-elevated rounded-lg border border-purple-500/30">
+                <div className="text-xs text-purple-400 font-medium">Findings</div>
+                <div className="text-lg font-bold text-pacs-text">
                   {annotations.length}
                 </div>
               </div>
@@ -204,9 +204,9 @@ export default function ImageViewer({
 
         {/* Instructions */}
         {isAnnotating && (
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-            <h4 className="font-medium text-blue-900 mb-2">Instructions:</h4>
-            <ul className="text-sm text-blue-800 space-y-1">
+          <div className="bg-pacs-elevated border border-pacs-accent/30 rounded-lg p-4">
+            <h4 className="font-medium text-pacs-text mb-2">Instructions:</h4>
+            <ul className="text-sm text-pacs-text-muted space-y-1">
               <li>• Click on any abnormal findings you identify</li>
               <li>• Each click places a red marker</li>
               <li>• Click on existing markers to remove them</li>
