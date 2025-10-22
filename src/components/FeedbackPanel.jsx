@@ -1,7 +1,10 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { formatTime, formatPercentage } from '../utils/analytics'
 import { generatePerformanceFeedback, calculateDifficultyScore } from '../utils/scoring'
+import { getNextRecommendedCase, getRecommendationReason } from '../utils/caseRecommendations'
+import Link from 'next/link'
 
 export default function FeedbackPanel({ 
   case: caseData, 
@@ -13,6 +16,21 @@ export default function FeedbackPanel({
 }) {
   const difficulty = calculateDifficultyScore(caseData)
   const feedback = generatePerformanceFeedback(accuracy, completionTime, difficulty)
+  const [recommendedCase, setRecommendedCase] = useState(null)
+  const [recommendationReason, setRecommendationReason] = useState('')
+
+  useEffect(() => {
+    // Get performance data and recommend next case
+    const performance = JSON.parse(localStorage.getItem('performance') || '[]')
+    const nextCase = getNextRecommendedCase(caseData.id, performance)
+    const recentPerformance = performance.slice(-5)
+    const recentAccuracy = recentPerformance.length > 0
+      ? recentPerformance.reduce((sum, p) => sum + p.accuracy, 0) / recentPerformance.length
+      : accuracy
+    
+    setRecommendedCase(nextCase)
+    setRecommendationReason(getRecommendationReason(recentAccuracy))
+  }, [caseData.id, accuracy])
 
   const getAccuracyColor = (acc) => {
     if (acc >= 80) return 'text-green-600 bg-green-50 border-green-200'
@@ -194,13 +212,43 @@ export default function FeedbackPanel({
         </div>
       )}
 
+      {/* Recommended Next Case */}
+      {recommendedCase && (
+        <div className="card bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200">
+          <div className="flex items-start justify-between mb-3">
+            <div>
+              <h4 className="font-semibold text-indigo-900 mb-1">
+                🎯 Recommended Next Case
+              </h4>
+              <p className="text-sm text-indigo-700">{recommendationReason}</p>
+            </div>
+            <span className={`px-2 py-1 text-xs font-medium rounded ${
+              recommendedCase.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
+              recommendedCase.difficulty === 'moderate' ? 'bg-yellow-100 text-yellow-700' :
+              'bg-red-100 text-red-700'
+            }`}>
+              {recommendedCase.difficulty}
+            </span>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-indigo-200">
+            <h5 className="font-medium text-medical-dark mb-1">{recommendedCase.title}</h5>
+            <p className="text-sm text-medical-gray mb-3">{recommendedCase.description}</p>
+            <Link href={`/cases/${recommendedCase.id}`}>
+              <button className="btn-primary w-full">
+                Start This Case →
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
+
       {/* Action Buttons */}
       <div className="flex space-x-3">
         <button
           onClick={onNextCase}
-          className="btn-primary flex-1"
+          className="btn-secondary flex-1"
         >
-          Next Case
+          Browse All Cases
         </button>
         <button
           onClick={onDashboard}

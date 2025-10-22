@@ -1,7 +1,7 @@
 {
-  "name": "cognitive-mirror",
-  "version": "0.1.0",
-  "description": "Interactive diagnostic skill development platform for medical training",
+  "name": "pixel-to-practice",
+  "version": "0.8.0",
+  "description": "AI-powered radiology case review with adaptive learning",
   "private": true,
   "scripts": {
     "dev": "next dev",

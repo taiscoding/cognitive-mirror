@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { formatTime, formatPercentage, getPerformanceInsights, getSkillLevelDescription } from '../utils/analytics'
 
 export default function ProgressDashboard({ 
@@ -57,12 +58,120 @@ export default function ProgressDashboard({
     </div>
   )
 
+  // Empty state for first-time users
+  if (totalCases === 0) {
+    return (
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-medical-dark mb-2">
+            Welcome to Your Dashboard
+          </h1>
+          <p className="text-medical-gray">
+            Start practicing to see your diagnostic skills improve in real-time
+          </p>
+        </div>
+
+        {/* Empty State Hero */}
+        <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200 text-center py-16">
+          <div className="max-w-2xl mx-auto">
+            <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <span className="text-4xl">🎯</span>
+            </div>
+            <h2 className="text-2xl font-bold text-medical-dark mb-4">
+              Ready to Master Radiology?
+            </h2>
+            <p className="text-lg text-medical-gray mb-8">
+              Complete your first case to unlock real-time performance analytics and 
+              watch your diagnostic accuracy improve with every review.
+            </p>
+            <Link href="/cases">
+              <button className="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                Start Your First Case →
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* What You'll Get */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="card text-center">
+            <div className="text-4xl mb-3">📊</div>
+            <h3 className="font-semibold text-medical-dark mb-2">Track Progress</h3>
+            <p className="text-sm text-medical-gray">
+              See accuracy, speed, and improvement trends over time
+            </p>
+          </div>
+          <div className="card text-center">
+            <div className="text-4xl mb-3">🧠</div>
+            <h3 className="font-semibold text-medical-dark mb-2">Get Insights</h3>
+            <p className="text-sm text-medical-gray">
+              AI-powered feedback on your diagnostic patterns
+            </p>
+          </div>
+          <div className="card text-center">
+            <div className="text-4xl mb-3">🚀</div>
+            <h3 className="font-semibold text-medical-dark mb-2">Level Up</h3>
+            <p className="text-sm text-medical-gray">
+              Watch your skill level increase with measurable metrics
+            </p>
+          </div>
+        </div>
+
+        {/* Quick Start Guide */}
+        <div className="card">
+          <h3 className="text-lg font-semibold text-medical-dark mb-4">
+            How It Works
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                1
+              </div>
+              <div>
+                <h4 className="font-medium text-medical-dark">Choose a Case</h4>
+                <p className="text-sm text-medical-gray">Select from curated radiology cases across difficulty levels</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                2
+              </div>
+              <div>
+                <h4 className="font-medium text-medical-dark">Annotate Findings</h4>
+                <p className="text-sm text-medical-gray">Click on the X-ray to mark abnormal findings you identify</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                3
+              </div>
+              <div>
+                <h4 className="font-medium text-medical-dark">Get Instant Feedback</h4>
+                <p className="text-sm text-medical-gray">See accuracy scores, correct findings, and clinical pearls immediately</p>
+              </div>
+            </div>
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-primary-500 text-white rounded-full flex items-center justify-center flex-shrink-0 font-bold">
+                4
+              </div>
+              <div>
+                <h4 className="font-medium text-medical-dark">Track Your Growth</h4>
+                <p className="text-sm text-medical-gray">Return here to see your improvement trends and performance insights</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="text-center">
         <h1 className="text-3xl font-bold text-medical-dark mb-2">
-          Diagnostic Performance Dashboard
+          Your Performance Dashboard
         </h1>
         <p className="text-medical-gray">
           Track your diagnostic skill development with real-time analytics
@@ -176,12 +285,13 @@ export default function ProgressDashboard({
 
       {/* Call to Action */}
       <div className="text-center">
-        <button
-          onClick={onStartPractice}
-          className="btn-primary text-lg px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-        >
-          {totalCases === 0 ? 'Start Your First Case' : 'Continue Practice'}
-        </button>
+        <Link href="/cases">
+          <button
+            className="btn-primary text-lg px-8 py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+          >
+            {totalCases === 0 ? 'Start Your First Case' : 'Continue Practice'}
+          </button>
+        </Link>
         <p className="text-sm text-medical-gray mt-2">
           {totalCases === 0 
             ? 'Begin your diagnostic skill development journey' 

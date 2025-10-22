@@ -1,14 +1,32 @@
-# Cognitive Mirror - Medical Diagnostic Training Platform
+# Pixel to Practice
 
-> Real-time performance analytics that make diagnostic skill improvement visceral and measurable.
+> **AI-powered radiology case review with adaptive learning**  
+> Master diagnostic radiology with real-time performance analytics and intelligent case recommendations.
+
+[![Next.js](https://img.shields.io/badge/Next.js-14-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC)](https://tailwindcss.com/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
+**Live Demo:** [pixel-to-practice.vercel.app](https://cognitive-mirror-fk2xiob7d-taisreading-gmailcoms-projects.vercel.app/)
+
+---
 
 ## 🎯 The Problem
 
-Medical residents have **zero objective feedback** on diagnostic skill development beyond subjective attending evaluation. Traditional case review lacks measurable progress tracking, making improvement feel abstract rather than tangible.
+Medical students and residents lack **objective, quantifiable feedback** on diagnostic skill development. Traditional case review platforms are static libraries—you review cases but never know if you're actually improving. Progress tracking is subjective, making skill development feel abstract rather than measurable.
 
 ## 💡 The Solution
 
-Cognitive Mirror provides medical students and residents with **real-time performance analytics** through interactive radiology case review. Users see their diagnostic accuracy, speed, and pattern recognition improve in real-time, making skill development feel immediate and visceral.
+**Pixel to Practice** transforms radiology learning with **real-time performance analytics** and an **adaptive learning engine**. Complete cases, get instant feedback, and watch your diagnostic accuracy improve with every review—quantified, visual, and visceral.
+
+### What Makes It Different
+- **Real-Time Analytics:** Track accuracy, speed, and improvement trends automatically
+- **Adaptive Learning Engine:** Smart case recommendations based on your performance
+- **Immediate Feedback:** Clinical pearls, learning points, and differential diagnoses
+- **Progress Tracking:** Longitudinal performance metrics that show measurable growth
+
+*Note: "Cognitive Mirror" is the underlying engine/system. "Pixel to Practice" is the product name.*
 
 ## ✨ Core Features
 
@@ -40,12 +58,14 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to start using the platform.
+Open [http://localhost:3000](http://localhost:3000) to start learning.
+
+### Demo Mode (For Interviews/Presentations)
+Click the **"👁️ Demo"** button in the header to load sample performance data instantly. Perfect for demonstrating the adaptive learning engine without completing multiple cases.
 
 ### System Requirements
 - Node.js 18+
-- Modern web browser
-- 8GB RAM (for medical image processing)
+- Modern web browser (Chrome, Firefox, Safari, Edge)
 
 ## 🏗️ Technical Architecture
 
@@ -161,45 +181,95 @@ npm run lint     # Code linting
 - Educational content integration
 - Professional credibility
 
-## 🚧 Current Status
+## 🚧 Project Status
 
-### ✅ Completed (MVP Ready)
-- Full Next.js application with all components
-- Interactive canvas annotation system
-- Real-time performance analytics
-- 5 tuberculosis screening cases with educational content
-- Professional medical UI/UX
-- Data persistence and progress tracking
+**Version:** v0.8 (Interview-Ready)  
+**Status:** ✅ Functional MVP with polished UX
 
-### 🔄 In Progress
-- Real medical image integration (placeholders active)
-- User validation with medical students
-- Performance optimization
+### ✅ Implemented Features
+- ✨ **Compelling landing page** with value proposition showcase
+- 📊 **Real-time performance dashboard** with skill progression tracking
+- 🖼️ **Interactive canvas annotation system** for chest X-rays
+- 🧠 **Adaptive learning engine** with smart case recommendations
+- 📈 **Performance analytics** (accuracy, speed, improvement trends)
+- ⏱️ **Live case timer** and progress indicators
+- 🎯 **Immediate feedback** with clinical pearls and learning points
+- 🎪 **Demo mode** for presentations and interviews
+- 📱 **Responsive design** for all devices
+- 💾 **Data persistence** with localStorage
 
-### 📋 Next Steps
-1. **User Testing**: Validate with medical students/residents
-2. **Dataset Integration**: Complete Montgomery County TB dataset
-3. **Learning Efficacy**: Measure actual skill improvement
-4. **Scale**: Expand to additional medical imaging modalities
+### Current Case Library
+- 5 curated tuberculosis screening cases
+- Difficulty levels: Easy, Moderate, Hard
+- Montgomery County CXR dataset (NIH/NLM)
+- Educational content with differentials
+
+### 🔮 Future Enhancements
+1. **Expanded Case Library**: More pathologies and imaging modalities
+2. **Spaced Repetition**: Algorithm-driven review timing
+3. **User Accounts**: Multi-device sync and progress backup
+4. **Comparative Analytics**: Anonymized peer performance comparisons
+5. **Mobile App**: Native iOS/Android with offline support
+
+## 🎓 For Interviewers & Educators
+
+### Try the Demo
+1. Visit the [live demo](https://cognitive-mirror-fk2xiob7d-taisreading-gmailcoms-projects.vercel.app/)
+2. Click **"👁️ Demo"** to load sample performance data
+3. Navigate to Dashboard to see analytics
+4. Try a case to experience the feedback loop
+
+### Interview Demo Guide
+See [INTERVIEW_DEMO_GUIDE.md](INTERVIEW_DEMO_GUIDE.md) for a complete walkthrough script, talking points, and demo strategies for residency interviews.
+
+## 🛠️ Technical Stack
+
+**Frontend:**
+- Next.js 14 (React 18) with App Router
+- Tailwind CSS for styling
+- Canvas API for image annotations
+
+**Analytics Engine:**
+- Custom performance tracking algorithms
+- F1 score calculation with spatial tolerance
+- Adaptive case recommendation system
+- Real-time metrics computation
+
+**Data:**
+- Montgomery County TB Screening Dataset (NIH/NLM)
+- localStorage for client-side persistence
+- JSON-based case database
+
+**Deployment:**
+- Vercel (production)
+- GitHub Actions (CI/CD)
+- Automatic preview deployments
 
 ## 📄 License
 
 MIT License - See [LICENSE](LICENSE) for details.
 
-## 🤝 Contributing
+## 👨‍⚕️ About the Developer
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+Built by **Theodore Addo**, medical student and developer passionate about merging clinical medicine with technology to create practical tools that solve real educational challenges.
 
-## 📞 Contact
+**Other Projects:** [theoaddo.com](https://theoaddo.com)
 
-For questions, issues, or collaboration opportunities, please open an issue on GitHub.
+## 📞 Contact & Feedback
+
+- **GitHub Issues:** For bugs and feature requests
+- **Discussions:** For questions and ideas
+- **Email:** Available on portfolio site
 
 ---
 
-**Built for medical education. Designed for measurable improvement. Optimized for learning.**
+## 🌟 Acknowledgments
 
-*Cognitive Mirror transforms subjective diagnostic training into objective skill development.*
+- **Dataset:** Montgomery County X-ray Set (NIH/NLM)
+- **Inspiration:** The challenge of quantifying diagnostic skill improvement
+- **Built for:** Medical students, residents, and radiologists committed to deliberate practice
+
+---
+
+**Pixel to Practice** · From pixels on a screen to excellence in clinical practice ·  
+*Making diagnostic skill improvement visceral, measurable, and continuous.*

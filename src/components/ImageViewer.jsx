@@ -16,6 +16,19 @@ export default function ImageViewer({
   const [imageError, setImageError] = useState(false)
   const [currentImageSrc, setCurrentImageSrc] = useState(caseData.image)
   const [hasFallback, setHasFallback] = useState(false)
+  const [elapsedTime, setElapsedTime] = useState(0)
+  const [startTime] = useState(Date.now())
+
+  // Timer for elapsed time
+  useEffect(() => {
+    if (!isAnnotating) return
+    
+    const timer = setInterval(() => {
+      setElapsedTime(Math.floor((Date.now() - startTime) / 1000))
+    }, 1000)
+    
+    return () => clearInterval(timer)
+  }, [isAnnotating, startTime])
 
   // Reset state when case changes
   useEffect(() => {
@@ -25,7 +38,15 @@ export default function ImageViewer({
     setImageError(false)
     setCurrentImageSrc(caseData.image)
     setHasFallback(false)
+    setElapsedTime(0)
   }, [caseData.id])
+
+  // Format time for display
+  const formatElapsedTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
+  }
 
   // Handle image load
   const handleImageLoad = () => {
@@ -144,21 +165,41 @@ export default function ImageViewer({
       {/* Case Header */}
       <div className="card">
         <div className="flex items-center justify-between mb-4">
-          <div>
-            <h3 className="text-lg font-semibold text-medical-dark">
-              {caseData.title}
-            </h3>
+          <div className="flex-1">
+            <div className="flex items-center space-x-3 mb-2">
+              <h3 className="text-lg font-semibold text-medical-dark">
+                {caseData.title}
+              </h3>
+              <span className={`px-3 py-1 text-sm font-medium rounded ${
+                caseData.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
+                caseData.difficulty === 'moderate' ? 'bg-yellow-100 text-yellow-700' :
+                'bg-red-100 text-red-700'
+              }`}>
+                {caseData.difficulty}
+              </span>
+            </div>
             <p className="text-sm text-medical-gray">
               {caseData.description}
             </p>
           </div>
-          <span className={`px-3 py-1 text-sm font-medium rounded ${
-            caseData.difficulty === 'easy' ? 'bg-green-100 text-green-700' :
-            caseData.difficulty === 'moderate' ? 'bg-yellow-100 text-yellow-700' :
-            'bg-red-100 text-red-700'
-          }`}>
-            {caseData.difficulty}
-          </span>
+          
+          {/* Progress Indicators */}
+          {isAnnotating && (
+            <div className="flex items-center space-x-4 ml-4">
+              <div className="text-center px-4 py-2 bg-blue-50 rounded-lg border border-blue-200">
+                <div className="text-xs text-blue-600 font-medium">Time</div>
+                <div className="text-lg font-bold text-blue-700 font-mono">
+                  {formatElapsedTime(elapsedTime)}
+                </div>
+              </div>
+              <div className="text-center px-4 py-2 bg-purple-50 rounded-lg border border-purple-200">
+                <div className="text-xs text-purple-600 font-medium">Findings</div>
+                <div className="text-lg font-bold text-purple-700">
+                  {annotations.length}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Instructions */}
