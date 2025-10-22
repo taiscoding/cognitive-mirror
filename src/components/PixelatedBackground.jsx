@@ -81,6 +81,11 @@ export default function PixelatedBackground() {
           const treeShape = Math.sin((yNorm - 0.3) * 20) * 0.05
           const isCypress = (xNorm < 0.15 + treeShape && yNorm > 0.2 && yNorm < 0.85)
           
+          // Rolling hills at bottom (organic landscape)
+          const hillPattern = Math.sin(xNorm * 8) * 0.05 + Math.cos(xNorm * 12) * 0.03
+          const hillLine = 0.85 + hillPattern
+          const isHills = yNorm > hillLine
+          
           if (isMoon) {
             // Bright yellow-white moon
             r = Math.floor(240 + swirl * 15)
@@ -105,6 +110,14 @@ export default function PixelatedBackground() {
             r = Math.floor(15 + swirl * 20)
             g = Math.floor(25 + swirl * 25)
             b = Math.floor(20 + swirl * 20)
+          }
+          else if (isHills) {
+            // Dark rolling hills with subtle variations (like distant landscape)
+            const hillDepth = (yNorm - hillLine) / (1 - hillLine) // 0 at hill line, 1 at bottom
+            const hillVariation = Math.sin(xNorm * 15) * 0.15
+            r = Math.floor(20 + hillVariation * 15 + hillDepth * 10)
+            g = Math.floor(25 + hillVariation * 20 + hillDepth * 15)
+            b = Math.floor(30 + hillVariation * 20 + hillDepth * 10)
           }
           else {
             // Swirling night sky with smooth vertical gradient
