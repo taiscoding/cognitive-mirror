@@ -14,13 +14,19 @@
     @apply bg-pacs-bg text-pacs-text antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
+    letter-spacing: -0.04em;
+    font-weight: 200;
+  }
+
+  h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
-    font-weight: 700;
+    font-weight: 300;
   }
 
   p {
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
+    font-weight: 300;
   }
 }
 

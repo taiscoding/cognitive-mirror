@@ -34,12 +34,13 @@ export default function PixelatedBackground() {
     ctx.scale(dpr, dpr)
 
     // Calculate pixel size based on scroll progress
-    // Start very pixelated (32px blocks), end at 1px (clear) as you scroll DOWN
-    const maxPixelSize = 32
-    const minPixelSize = 1
+    // Start pixelated (20px blocks), gradually become clear (2px) as you scroll DOWN
+    // Effect reverses when scrolling back up
+    const maxPixelSize = 20  // Reduced from 32 for more recognizable initial state
+    const minPixelSize = 2   // Increased from 1 for better performance
     const pixelSize = Math.max(
       minPixelSize,
-      maxPixelSize * (1 - scrollProgress)  // Inverted: starts at max, decreases to min
+      maxPixelSize * (1 - scrollProgress)  // 0% scroll = 20px, 100% scroll = 2px
     )
 
     // Create pixelated image from artwork
@@ -49,45 +50,57 @@ export default function PixelatedBackground() {
       const cols = Math.ceil(window.innerWidth / pixelSize)
       const rows = Math.ceil(window.innerHeight / pixelSize)
 
-      // Create an impressionist-style pattern (inspired by Monet's water lilies)
-      // Using procedural generation to create an artwork-like appearance
+      // Create a recognizable impressionist scene (water lilies on a pond)
+      // Even when pixelated, the composition should be identifiable
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const xPos = x * pixelSize
           const yPos = y * pixelSize
           
-          // Create organic flowing patterns like water lilies
           const xNorm = x / cols
           const yNorm = y / rows
           
-          // Layered noise for organic feel
-          const wave1 = Math.sin(xNorm * 8 + yNorm * 3) * 0.5
-          const wave2 = Math.cos(xNorm * 4 - yNorm * 6) * 0.3
-          const wave3 = Math.sin((xNorm + yNorm) * 10) * 0.2
-          const combinedWave = (wave1 + wave2 + wave3) * 0.5 + 0.5
-          
-          // Create impressionist color palette (blues, greens, soft purples)
-          // Top portion: sky/water (blues, cyans)
-          // Middle: water lilies (greens, soft pinks)
-          // Bottom: deeper water (darker blues, purples)
-          
+          // Create distinct zones that are recognizable even when pixelated
           let r, g, b
-          if (yNorm < 0.3) {
-            // Sky/upper water - soft blues and cyans
-            r = Math.floor(20 + combinedWave * 60 + Math.sin(xNorm * 15) * 20)
-            g = Math.floor(40 + combinedWave * 80 + Math.cos(yNorm * 10) * 30)
-            b = Math.floor(60 + combinedWave * 100)
-          } else if (yNorm < 0.7) {
-            // Middle - lily pads (greens, aquas, soft pinks)
-            const lilyPattern = Math.sin(xNorm * 20) * Math.cos(yNorm * 15)
-            r = Math.floor(30 + combinedWave * 50 + lilyPattern * 40)
-            g = Math.floor(50 + combinedWave * 90 + Math.sin(xNorm * 12) * 30)
-            b = Math.floor(40 + combinedWave * 70)
-          } else {
-            // Bottom - deeper water (darker blues, purples)
-            r = Math.floor(15 + combinedWave * 40)
-            g = Math.floor(25 + combinedWave * 50)
-            b = Math.floor(45 + combinedWave * 85 + Math.cos(xNorm * 8) * 20)
+          
+          // Top third: Light sky reflection (light blues/cyans)
+          if (yNorm < 0.25) {
+            const skyVariation = Math.sin(xNorm * 6) * 0.15 + Math.cos(yNorm * 8) * 0.1
+            r = Math.floor(50 + skyVariation * 40)
+            g = Math.floor(80 + skyVariation * 50)
+            b = Math.floor(120 + skyVariation * 60)
+          }
+          // Upper-middle: Distant lily pads (teal/green transition)
+          else if (yNorm < 0.45) {
+            const lilyDots = (Math.sin(xNorm * 25) * Math.cos(yNorm * 20) > 0.3) ? 1.3 : 1
+            r = Math.floor(40 * lilyDots + Math.sin(xNorm * 10) * 20)
+            g = Math.floor(95 * lilyDots + Math.cos(yNorm * 12) * 25)
+            b = Math.floor(80 * lilyDots)
+          }
+          // Middle: Main lily pad cluster (vibrant greens with pink flowers)
+          else if (yNorm < 0.65) {
+            // Create circular lily pad shapes
+            const centerDist = Math.sqrt(Math.pow((xNorm - 0.5) * 2, 2) + Math.pow((yNorm - 0.55) * 2, 2))
+            const isFlower = (centerDist < 0.3 && Math.sin(xNorm * 40) * Math.cos(yNorm * 40) > 0.5)
+            
+            if (isFlower) {
+              // Pink/white flowers
+              r = Math.floor(180 + Math.sin(xNorm * 30) * 40)
+              g = Math.floor(100 + Math.cos(yNorm * 30) * 50)
+              b = Math.floor(140)
+            } else {
+              // Green lily pads
+              r = Math.floor(35 + Math.sin(xNorm * 15) * 25)
+              g = Math.floor(110 + Math.cos(yNorm * 18) * 30)
+              b = Math.floor(65 + Math.sin((xNorm + yNorm) * 12) * 20)
+            }
+          }
+          // Lower section: Deep water with reflections (dark blue/purple)
+          else {
+            const waterRipple = Math.sin(xNorm * 12 + yNorm * 8) * 0.2
+            r = Math.floor(25 + waterRipple * 30)
+            g = Math.floor(45 + waterRipple * 35)
+            b = Math.floor(85 + waterRipple * 50 + Math.cos(xNorm * 15) * 25)
           }
           
           ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
@@ -115,8 +128,8 @@ export default function PixelatedBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.25 }}
+      className="fixed inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 0, opacity: 0.3 }}
     />
   )
 }

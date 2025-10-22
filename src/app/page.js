@@ -51,22 +51,23 @@ export default function Home() {
             </span>
           </div>
           
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-pacs-text mb-6 leading-tight tracking-tight">
-            From <span className="text-gradient bg-clip-text">Pixel</span>
-            <br className="md:hidden" />
-            <span className="text-pacs-text-muted"> to </span>
-            <span className="text-gradient bg-clip-text">Practice</span>
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-extralight text-pacs-text mb-12 leading-tight tracking-tighter">
+            From <span className="text-gradient bg-clip-text font-light">Pixel</span>
+            <br />
+            <span className="text-pacs-text-muted font-thin"> to </span>
+            <span className="text-gradient bg-clip-text font-light">Practice</span>
           </h1>
           
           <p 
-            className="text-xl md:text-2xl text-pacs-text-muted max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-lg md:text-xl text-pacs-text-muted max-w-2xl mx-auto mb-16 leading-loose font-light tracking-wide"
             style={{
               opacity: Math.max(0, 1 - scrollY / 400),
               transition: 'opacity 0.1s ease-out'
             }}
           >
-            Master radiology with real-time AI feedback.<br className="hidden md:block" />
-            <span className="text-pacs-text">See your diagnostic skills improve</span> with every case.
+            Master radiology with real-time AI feedback.
+            <br />
+            <span className="text-pacs-text font-normal">See your diagnostic skills improve</span> with every case.
           </p>
 
           {stats.hasData ? (
@@ -105,7 +106,7 @@ export default function Home() {
 
         {/* Key Features */}
         <div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32 mt-32"
           style={{
             transform: `translateY(${Math.max(0, 50 - scrollY * 0.1)}px)`,
             opacity: Math.min(1, scrollY / 300),
@@ -159,9 +160,9 @@ export default function Home() {
         </div>
 
         {/* The Problem/Solution */}
-        <div className="card bg-pacs-surface border-pacs-border mb-16">
+        <div className="card bg-pacs-surface border-pacs-border mb-32 mt-16">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-pacs-text mb-4">
+            <h2 className="text-3xl font-light text-pacs-text mb-6 tracking-tight">
               Traditional radiology training lacks objective feedback
             </h2>
             <p className="text-pacs-text-muted text-lg mb-6">
