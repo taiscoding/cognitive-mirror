@@ -50,8 +50,7 @@ export default function PixelatedBackground() {
       const cols = Math.ceil(window.innerWidth / pixelSize)
       const rows = Math.ceil(window.innerHeight / pixelSize)
 
-      // Create Monet's Water Lilies composition: weeping willows, reflections, lily pads
-      // Match the reference image's vertical composition and color palette
+      // Create Van Gogh's Starry Night: swirling sky, stars, moon, cypress tree, village
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
           const xPos = x * pixelSize
@@ -62,61 +61,92 @@ export default function PixelatedBackground() {
           
           let r, g, b
           
-          // Weeping willow branches hanging from top (like Monet's composition)
-          const isWillow = (yNorm < 0.35 && (
-            (xNorm < 0.25 && Math.sin(yNorm * 30 + xNorm * 8) > 0.4) ||
-            (xNorm > 0.75 && Math.sin(yNorm * 30 - xNorm * 8) > 0.4)
-          ))
+          // Create swirling pattern for the sky (Van Gogh's signature brush strokes)
+          const swirl1 = Math.sin(xNorm * 8 + yNorm * 6 + Math.cos(yNorm * 10) * 2) * 0.5
+          const swirl2 = Math.cos(xNorm * 6 - yNorm * 8 + Math.sin(xNorm * 12) * 1.5) * 0.5
+          const swirl = (swirl1 + swirl2) * 0.5 + 0.5
           
-          // Lily pad clusters (concentrated in lower-middle, like Monet)
-          const lilyPadPattern = Math.sin(xNorm * 20) * Math.cos(yNorm * 15)
-          const isLilyPad = (yNorm > 0.4 && yNorm < 0.75 && lilyPadPattern > 0.2)
+          // Crescent moon (upper right)
+          const moonX = 0.75
+          const moonY = 0.15
+          const distToMoon = Math.sqrt(Math.pow((xNorm - moonX) * 2, 2) + Math.pow((yNorm - moonY) * 2, 2))
+          const isMoon = distToMoon < 0.08
+          const isMoonGlow = distToMoon < 0.15
           
-          // Pink flowers scattered on lily pads
-          const isPinkFlower = (isLilyPad && 
-            Math.sin(xNorm * 50) * Math.cos(yNorm * 50) > 0.7 &&
-            Math.random() > 0.7) // Add some randomness for natural placement
+          // Stars (scattered across upper portion)
+          const starPattern = Math.sin(xNorm * 50) * Math.cos(yNorm * 50)
+          const isStar = (yNorm < 0.6 && starPattern > 0.85)
           
-          if (isWillow) {
-            // Dark green willow branches with blue-green reflections
-            r = Math.floor(20 + Math.sin(yNorm * 20) * 30)
-            g = Math.floor(90 + Math.cos(xNorm * 15) * 40)
-            b = Math.floor(70 + Math.sin((xNorm + yNorm) * 10) * 30)
+          // Cypress tree (dark vertical shape on left)
+          const treeShape = Math.sin((yNorm - 0.3) * 20) * 0.05
+          const isCypress = (xNorm < 0.15 + treeShape && yNorm > 0.2 && yNorm < 0.75)
+          
+          // Village at bottom (small buildings)
+          const isVillage = (yNorm > 0.75 && Math.sin(xNorm * 30) > 0.3)
+          
+          if (isMoon) {
+            // Bright yellow-white moon
+            r = Math.floor(240 + swirl * 15)
+            g = Math.floor(230 + swirl * 20)
+            b = Math.floor(180 + swirl * 30)
           }
-          else if (isPinkFlower) {
-            // Pink/magenta water lily flowers
-            r = Math.floor(200 + Math.sin(xNorm * 40) * 30)
-            g = Math.floor(110 + Math.cos(yNorm * 40) * 40)
-            b = Math.floor(160 + Math.sin((xNorm - yNorm) * 30) * 30)
+          else if (isMoonGlow) {
+            // Yellow glow around moon
+            const glowIntensity = 1 - (distToMoon - 0.08) / 0.07
+            r = Math.floor(200 + glowIntensity * 40)
+            g = Math.floor(180 + glowIntensity * 50)
+            b = Math.floor(100 + glowIntensity * 80)
           }
-          else if (isLilyPad) {
-            // Rich green lily pads with yellow-green highlights
-            r = Math.floor(40 + Math.sin(xNorm * 25) * 50)
-            g = Math.floor(120 + Math.cos(yNorm * 20) * 60)
-            b = Math.floor(55 + Math.sin((xNorm + yNorm) * 18) * 35)
+          else if (isStar) {
+            // Bright yellow-white stars with radiating glow
+            r = Math.floor(220 + swirl * 35)
+            g = Math.floor(210 + swirl * 40)
+            b = Math.floor(160 + swirl * 60)
+          }
+          else if (isCypress) {
+            // Very dark green-black cypress tree
+            r = Math.floor(15 + swirl * 20)
+            g = Math.floor(25 + swirl * 25)
+            b = Math.floor(20 + swirl * 20)
+          }
+          else if (isVillage) {
+            // Dark village buildings with warm lights
+            const hasLight = Math.sin(xNorm * 60) > 0.7
+            if (hasLight) {
+              r = Math.floor(200 + swirl * 30)
+              g = Math.floor(150 + swirl * 40)
+              b = Math.floor(50 + swirl * 30)
+            } else {
+              r = Math.floor(30 + swirl * 20)
+              g = Math.floor(35 + swirl * 25)
+              b = Math.floor(50 + swirl * 30)
+            }
           }
           else {
-            // Water with sky reflections (blues, cyans, soft purples)
-            // Upper water: lighter reflections
-            if (yNorm < 0.4) {
-              const reflection = Math.sin(xNorm * 8 + yNorm * 6) * 0.3
-              r = Math.floor(80 + reflection * 50 + Math.sin(xNorm * 12) * 30)
-              g = Math.floor(130 + reflection * 60 + Math.cos(yNorm * 10) * 40)
-              b = Math.floor(150 + reflection * 70)
+            // Swirling night sky (blues with hints of green and purple)
+            if (yNorm < 0.3) {
+              // Upper sky: deeper blues with swirls
+              r = Math.floor(20 + swirl * 60)
+              g = Math.floor(40 + swirl * 80)
+              b = Math.floor(90 + swirl * 100)
             }
-            // Middle water: medium tones with green reflections
-            else if (yNorm < 0.7) {
-              const waterFlow = Math.sin(xNorm * 10 + yNorm * 8) * 0.25
-              r = Math.floor(50 + waterFlow * 60 + Math.sin(xNorm * 15) * 25)
-              g = Math.floor(105 + waterFlow * 65 + Math.cos(yNorm * 12) * 35)
-              b = Math.floor(120 + waterFlow * 60)
+            else if (yNorm < 0.6) {
+              // Middle sky: rich blues with cyan swirls
+              r = Math.floor(30 + swirl * 50)
+              g = Math.floor(60 + swirl * 90)
+              b = Math.floor(110 + swirl * 90)
             }
-            // Lower water: deeper blues and purples
+            else if (yNorm < 0.75) {
+              // Lower sky/horizon: lighter blues transitioning
+              r = Math.floor(40 + swirl * 70)
+              g = Math.floor(70 + swirl * 80)
+              b = Math.floor(100 + swirl * 70)
+            }
             else {
-              const deepWater = Math.sin(xNorm * 12 - yNorm * 10) * 0.2
-              r = Math.floor(40 + deepWater * 45)
-              g = Math.floor(85 + deepWater * 55 + Math.sin(xNorm * 18) * 30)
-              b = Math.floor(110 + deepWater * 65 + Math.cos(yNorm * 15) * 35)
+              // Horizon above village: darkest blues
+              r = Math.floor(25 + swirl * 40)
+              g = Math.floor(35 + swirl * 50)
+              b = Math.floor(60 + swirl * 60)
             }
           }
           
