@@ -123,31 +123,19 @@ export default function PixelatedBackground() {
             }
           }
           else {
-            // Swirling night sky (blues with hints of green and purple)
-            if (yNorm < 0.3) {
-              // Upper sky: deeper blues with swirls
-              r = Math.floor(20 + swirl * 60)
-              g = Math.floor(40 + swirl * 80)
-              b = Math.floor(90 + swirl * 100)
-            }
-            else if (yNorm < 0.6) {
-              // Middle sky: rich blues with cyan swirls
-              r = Math.floor(30 + swirl * 50)
-              g = Math.floor(60 + swirl * 90)
-              b = Math.floor(110 + swirl * 90)
-            }
-            else if (yNorm < 0.75) {
-              // Lower sky/horizon: lighter blues transitioning
-              r = Math.floor(40 + swirl * 70)
-              g = Math.floor(70 + swirl * 80)
-              b = Math.floor(100 + swirl * 70)
-            }
-            else {
-              // Horizon above village: darkest blues
-              r = Math.floor(25 + swirl * 40)
-              g = Math.floor(35 + swirl * 50)
-              b = Math.floor(60 + swirl * 60)
-            }
+            // Swirling night sky with smooth vertical gradient
+            // Blend from deep blues at top to medium blues at bottom
+            const skyBlend = yNorm // 0 at top, 1 at bottom
+            
+            // Base colors with smooth gradient
+            const baseR = 20 + (skyBlend * 35)  // 20 -> 55
+            const baseG = 40 + (skyBlend * 50)  // 40 -> 90
+            const baseB = 90 + (skyBlend * 30)  // 90 -> 120
+            
+            // Add swirling variations
+            r = Math.floor(baseR + swirl * 50)
+            g = Math.floor(baseG + swirl * 70)
+            b = Math.floor(baseB + swirl * 80)
           }
           
           ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
