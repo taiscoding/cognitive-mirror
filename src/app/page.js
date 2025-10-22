@@ -45,7 +45,7 @@ export default function Home() {
               transition: 'transform 0.1s ease-out'
             }}
           >
-          <div className="inline-block mb-6 px-4 py-2 bg-pacs-elevated border border-pacs-accent/30 rounded-full backdrop-blur-sm">
+          <div className="inline-block mb-6 px-4 py-2 bg-pacs-elevated/90 border border-pacs-accent/30 rounded-full backdrop-blur-md">
             <span className="text-sm font-medium text-pacs-accent">
               AI-Powered Adaptive Learning
             </span>

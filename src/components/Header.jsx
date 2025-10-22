@@ -30,7 +30,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-pacs-surface shadow-lg border-b border-pacs-border">
+    <header className="bg-pacs-surface/90 backdrop-blur-md shadow-lg border-b border-pacs-border">
       <div className="medical-container py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-4">

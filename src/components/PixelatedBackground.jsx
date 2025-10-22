@@ -73,13 +73,13 @@ export default function PixelatedBackground() {
           const isMoon = distToMoon < 0.08
           const isMoonGlow = distToMoon < 0.15
           
-          // Stars (scattered across upper portion)
-          const starPattern = Math.sin(xNorm * 50) * Math.cos(yNorm * 50)
-          const isStar = (yNorm < 0.6 && starPattern > 0.85)
-          
-          // Cypress tree (dark vertical shape on left)
+          // Cypress tree (dark vertical shape on left) - check FIRST for proper layering
           const treeShape = Math.sin((yNorm - 0.3) * 20) * 0.05
           const isCypress = (xNorm < 0.15 + treeShape && yNorm > 0.2 && yNorm < 0.85)
+          
+          // Stars (scattered across upper portion, but NOT over the tree)
+          const starPattern = Math.sin(xNorm * 50) * Math.cos(yNorm * 50)
+          const isStar = (!isCypress && yNorm < 0.6 && starPattern > 0.85)
           
           // Rolling hills at bottom (organic landscape)
           const hillPattern = Math.sin(xNorm * 8) * 0.05 + Math.cos(xNorm * 12) * 0.03
