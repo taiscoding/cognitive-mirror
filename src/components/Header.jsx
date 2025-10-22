@@ -74,7 +74,7 @@ export default function Header() {
               }`}
               title={demoActive ? 'Demo Mode Active - Click to clear' : 'Click to load demo data for interviews'}
             >
-              {demoActive ? '✨ Demo Mode' : '👁️ Demo'}
+              {demoActive ? 'Demo Mode' : 'Demo'}
             </button>
           </nav>
         </div>

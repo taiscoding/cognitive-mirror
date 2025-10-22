@@ -76,18 +76,20 @@ export default function ProgressDashboard({
         <div className="card bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200 text-center py-16">
           <div className="max-w-2xl mx-auto">
             <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-              <span className="text-4xl">🎯</span>
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
             </div>
             <h2 className="text-2xl font-bold text-medical-dark mb-4">
-              Ready to Master Radiology?
+              Begin Diagnostic Training
             </h2>
             <p className="text-lg text-medical-gray mb-8">
               Complete your first case to unlock real-time performance analytics and 
-              watch your diagnostic accuracy improve with every review.
+              quantified diagnostic accuracy metrics.
             </p>
             <Link href="/cases">
-              <button className="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-                Start Your First Case →
+              <button className="btn-primary text-lg px-8 py-4 shadow-lg hover:shadow-xl transition-all duration-200">
+                Start First Case
               </button>
             </Link>
           </div>
@@ -95,25 +97,37 @@ export default function ProgressDashboard({
 
         {/* What You'll Get */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="card text-center">
-            <div className="text-4xl mb-3">📊</div>
+          <div className="card text-center hover-lift">
+            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
             <h3 className="font-semibold text-medical-dark mb-2">Track Progress</h3>
             <p className="text-sm text-medical-gray">
-              See accuracy, speed, and improvement trends over time
+              Monitor accuracy, speed, and improvement trends over time
             </p>
           </div>
-          <div className="card text-center">
-            <div className="text-4xl mb-3">🧠</div>
-            <h3 className="font-semibold text-medical-dark mb-2">Get Insights</h3>
+          <div className="card text-center hover-lift">
+            <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 className="font-semibold text-medical-dark mb-2">Receive Insights</h3>
             <p className="text-sm text-medical-gray">
-              AI-powered feedback on your diagnostic patterns
+              AI-powered feedback on diagnostic patterns and performance
             </p>
           </div>
-          <div className="card text-center">
-            <div className="text-4xl mb-3">🚀</div>
-            <h3 className="font-semibold text-medical-dark mb-2">Level Up</h3>
+          <div className="card text-center hover-lift">
+            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <h3 className="font-semibold text-medical-dark mb-2">Advance Skills</h3>
             <p className="text-sm text-medical-gray">
-              Watch your skill level increase with measurable metrics
+              Measurable skill level progression with quantified metrics
             </p>
           </div>
         </div>

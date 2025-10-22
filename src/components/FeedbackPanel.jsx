@@ -188,7 +188,7 @@ export default function FeedbackPanel({
       {caseData.clinicalPearls && (
         <div className="card bg-gradient-to-r from-yellow-50 to-orange-50 border-yellow-200">
           <h4 className="font-semibold text-yellow-900 mb-2">
-            💡 Clinical Pearl
+            Clinical Pearl
           </h4>
           <p className="text-yellow-800 text-sm leading-relaxed">
             {caseData.clinicalPearls}
@@ -218,7 +218,7 @@ export default function FeedbackPanel({
           <div className="flex items-start justify-between mb-3">
             <div>
               <h4 className="font-semibold text-indigo-900 mb-1">
-                🎯 Recommended Next Case
+                Recommended Next Case
               </h4>
               <p className="text-sm text-indigo-700">{recommendationReason}</p>
             </div>

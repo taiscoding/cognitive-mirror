@@ -27,9 +27,9 @@ export default function RootLayout({ children }) {
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2">
               <div className="medical-container">
                 <div className="flex items-center justify-center space-x-2 text-sm">
-                  <span className="font-semibold">✨ Demo Mode Active</span>
+                  <span className="font-semibold">Demo Mode Active</span>
                   <span>•</span>
-                  <span>Showing sample performance data for demonstration</span>
+                  <span>Sample performance data loaded for demonstration</span>
                 </div>
               </div>
             </div>

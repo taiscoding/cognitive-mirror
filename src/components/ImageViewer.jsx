@@ -221,13 +221,15 @@ export default function ImageViewer({
         <div className="relative bg-black rounded-lg overflow-hidden" style={{ aspectRatio: '1' }}>
           {imageError ? (
             // Placeholder for missing image
-            <div className="w-full h-full flex items-center justify-center bg-gray-100">
-              <div className="text-center text-gray-500">
-                <div className="text-6xl mb-4">🫁</div>
-                <div className="text-lg font-medium mb-2">Chest X-ray</div>
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              <div className="text-center text-gray-600">
+                <svg className="w-24 h-24 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <div className="text-lg font-medium mb-2">Chest Radiograph</div>
                 <div className="text-sm">{caseData.title}</div>
-                <div className="text-xs mt-4 bg-gray-200 px-3 py-1 rounded">
-                  Image placeholder - Click to practice annotation
+                <div className="text-xs mt-4 bg-gray-300 px-3 py-1 rounded inline-block">
+                  Image Preview
                 </div>
               </div>
             </div>

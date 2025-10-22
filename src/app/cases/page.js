@@ -33,7 +33,24 @@ export default function CasesPage() {
   }
 
   const getDiagnosisIcon = (diagnosis) => {
-    return diagnosis === 'tuberculosis' ? '🫁' : diagnosis === 'normal' ? '✅' : '🔍'
+    if (diagnosis === 'tuberculosis') {
+      return (
+        <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      )
+    } else if (diagnosis === 'normal') {
+      return (
+        <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
+    }
+    return (
+      <svg className="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    )
   }
 
   const categories = [...new Set(cases.map(c => c.category))]
@@ -101,10 +118,10 @@ export default function CasesPage() {
             className="card hover:shadow-lg cursor-pointer transition-all duration-200 transform hover:scale-105 group"
           >
             {/* Case Image Placeholder */}
-            <div className="aspect-video bg-gray-100 rounded-lg mb-4 flex items-center justify-center border-2 border-dashed border-gray-300 group-hover:border-primary-300 transition-colors">
+            <div className="aspect-video bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg mb-4 flex items-center justify-center border border-gray-200 group-hover:border-primary-300 transition-colors">
               <div className="text-center text-gray-500">
-                <div className="text-4xl mb-2">{getDiagnosisIcon(caseItem.diagnosis)}</div>
-                <div className="text-sm">Chest X-ray</div>
+                <div className="mb-2">{getDiagnosisIcon(caseItem.diagnosis)}</div>
+                <div className="text-sm font-medium">Chest Radiograph</div>
               </div>
             </div>
 
@@ -137,7 +154,7 @@ export default function CasesPage() {
             <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
               <div className="text-center">
                 <span className="text-sm font-medium text-primary-600">
-                  Click to analyze →
+                  Begin Analysis
                 </span>
               </div>
             </div>
@@ -148,12 +165,16 @@ export default function CasesPage() {
       {/* No Results */}
       {filteredCases.length === 0 && (
         <div className="text-center py-12">
-          <div className="text-4xl mb-4">🔍</div>
+          <div className="mb-4">
+            <svg className="w-16 h-16 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
           <h3 className="text-lg font-medium text-medical-dark mb-2">
-            No cases found
+            No Cases Found
           </h3>
           <p className="text-medical-gray">
-            Try adjusting your filters to see more cases
+            Adjust your filters to view available cases
           </p>
         </div>
       )}
