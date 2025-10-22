@@ -176,7 +176,7 @@ export default function PixelatedBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 0, opacity: 0.3 }}
+      style={{ zIndex: 0, opacity: 0.5 }}
     />
   )
 }

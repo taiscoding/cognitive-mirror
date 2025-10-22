@@ -145,40 +145,21 @@ export default function Home() {
         </div>
 
         {/* The Problem/Solution */}
-        <div className="card bg-pacs-surface border-pacs-border mb-32 mt-16">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-light text-pacs-text mb-6 tracking-tight">
-              Traditional radiology training lacks objective feedback
-            </h2>
-            <p className="text-pacs-text-muted text-lg mb-6">
-              You review cases, but never know if you're actually improving. 
-              Pixel to Practice quantifies your diagnostic skill development—making improvement 
-              <span className="font-semibold text-pacs-accent"> visceral and immediate</span>.
-            </p>
-            <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="bg-pacs-elevated rounded-lg p-4 border border-red-900/30">
-                <div className="font-semibold text-red-400 mb-2">Traditional Learning</div>
-                <div className="text-left text-pacs-text-muted space-y-1">
-                  <div>• Subjective feedback only</div>
-                  <div>• No progress tracking</div>
-                  <div>• Abstract improvement</div>
-                </div>
-              </div>
-              <div className="bg-pacs-elevated rounded-lg p-4 border border-green-900/30">
-                <div className="font-semibold text-green-400 mb-2">Pixel to Practice</div>
-                <div className="text-left text-pacs-text-muted space-y-1">
-                  <div>• Real-time analytics</div>
-                  <div>• Measurable progress</div>
-                  <div>• Quantified improvement</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-4xl mx-auto text-center mb-32 mt-16">
+          <h2 className="text-4xl md:text-5xl font-extralight text-pacs-text mb-8 tracking-tighter leading-tight">
+            Traditional radiology training lacks objective feedback
+          </h2>
+          <p className="text-pacs-text-muted text-base md:text-lg mb-12 font-light leading-loose max-w-2xl mx-auto">
+            You review cases, but never know if you're actually improving. 
+            <br /><br />
+            Pixel to Practice quantifies your diagnostic skill development—making improvement 
+            <span className="text-pacs-text font-normal"> visceral and immediate</span>.
+          </p>
         </div>
 
         {/* CTA Footer */}
-        <div className="text-center pb-12">
-          <p className="text-pacs-text-muted mb-4">
+        <div className="text-center pb-16">
+          <p className="text-pacs-text-muted text-sm mb-6 font-light">
             Join medical students building diagnostic expertise through deliberate practice
           </p>
           <Link href="/cases">
