@@ -33,8 +33,8 @@ export default function Header() {
     <header className="bg-pacs-surface shadow-lg border-b border-pacs-border">
       <div className="medical-container py-4">
         <div className="flex items-center justify-between">
-          <Link href="/dashboard" className="flex items-center space-x-4">
-            <h1 className="text-2xl font-bold text-gradient">
+          <Link href="/" className="flex items-center space-x-4">
+            <h1 className="text-2xl font-bold text-gradient hover:opacity-80 transition-opacity">
               Pixel to Practice
             </h1>
             <span className="text-pacs-text-muted text-sm">

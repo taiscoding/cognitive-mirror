@@ -1,10 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import PixelatedBackground from '../components/PixelatedBackground'
 
 export default function Home() {
   const [stats, setStats] = useState({ totalCases: 0, avgAccuracy: 0, hasData: false })
+  const [scrollY, setScrollY] = useState(0)
+  const heroRef = useRef(null)
 
   useEffect(() => {
     // Check if user has existing data
@@ -19,24 +22,51 @@ export default function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="min-h-[calc(100vh-200px)] flex items-center">
-      <div className="w-full max-w-6xl mx-auto px-4">
-        {/* Hero Section */}
-        <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-full">
-            <span className="text-sm font-medium text-blue-700">
+    <>
+      <PixelatedBackground />
+      <div className="relative min-h-[calc(100vh-200px)] flex items-center" style={{ zIndex: 1 }}>
+        <div className="w-full max-w-6xl mx-auto px-4">
+          {/* Hero Section */}
+          <div 
+            ref={heroRef}
+            className="text-center mb-16 animate-fade-in"
+            style={{
+              transform: `translateY(${scrollY * 0.3}px)`,
+              opacity: Math.max(0, 1 - scrollY / 500),
+              transition: 'transform 0.1s ease-out'
+            }}
+          >
+          <div className="inline-block mb-6 px-4 py-2 bg-pacs-elevated border border-pacs-accent/30 rounded-full backdrop-blur-sm">
+            <span className="text-sm font-medium text-pacs-accent">
               AI-Powered Adaptive Learning
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold text-pacs-text mb-6 leading-tight">
-            From <span className="text-gradient">Pixel to Practice</span>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-pacs-text mb-6 leading-tight tracking-tight">
+            From <span className="text-gradient bg-clip-text">Pixel</span>
+            <br className="md:hidden" />
+            <span className="text-pacs-text-muted"> to </span>
+            <span className="text-gradient bg-clip-text">Practice</span>
           </h1>
           
-          <p className="text-xl text-pacs-text-muted max-w-2xl mx-auto mb-8 leading-relaxed">
-            Master radiology with real-time AI feedback. See your diagnostic skills improve 
-            with every case—quantified, visual, and visceral.
+          <p 
+            className="text-xl md:text-2xl text-pacs-text-muted max-w-3xl mx-auto mb-12 leading-relaxed font-light"
+            style={{
+              opacity: Math.max(0, 1 - scrollY / 400),
+              transition: 'opacity 0.1s ease-out'
+            }}
+          >
+            Master radiology with real-time AI feedback.<br className="hidden md:block" />
+            <span className="text-pacs-text">See your diagnostic skills improve</span> with every case.
           </p>
 
           {stats.hasData ? (
@@ -74,7 +104,14 @@ export default function Home() {
         </div>
 
         {/* Key Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div 
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
+          style={{
+            transform: `translateY(${Math.max(0, 50 - scrollY * 0.1)}px)`,
+            opacity: Math.min(1, scrollY / 300),
+            transition: 'all 0.3s ease-out'
+          }}
+        >
           <div className="card text-center hover:shadow-lg transition-all duration-300 hover-lift">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +159,7 @@ export default function Home() {
         </div>
 
         {/* The Problem/Solution */}
-        <div className="card bg-gradient-to-r from-blue-50 via-cyan-50 to-blue-50 border-blue-200 mb-16">
+        <div className="card bg-pacs-surface border-pacs-border mb-16">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-2xl font-bold text-pacs-text mb-4">
               Traditional radiology training lacks objective feedback
@@ -130,19 +167,19 @@ export default function Home() {
             <p className="text-pacs-text-muted text-lg mb-6">
               You review cases, but never know if you're actually improving. 
               Pixel to Practice quantifies your diagnostic skill development—making improvement 
-              <span className="font-semibold text-blue-700"> visceral and immediate</span>.
+              <span className="font-semibold text-pacs-accent"> visceral and immediate</span>.
             </p>
             <div className="grid grid-cols-2 gap-4 text-sm">
-              <div className="bg-pacs-surface rounded-lg p-4 border border-red-200">
-                <div className="font-semibold text-red-700 mb-2">Traditional Learning</div>
+              <div className="bg-pacs-elevated rounded-lg p-4 border border-red-900/30">
+                <div className="font-semibold text-red-400 mb-2">Traditional Learning</div>
                 <div className="text-left text-pacs-text-muted space-y-1">
                   <div>• Subjective feedback only</div>
                   <div>• No progress tracking</div>
                   <div>• Abstract improvement</div>
                 </div>
               </div>
-              <div className="bg-pacs-surface rounded-lg p-4 border border-green-200">
-                <div className="font-semibold text-green-700 mb-2">Pixel to Practice</div>
+              <div className="bg-pacs-elevated rounded-lg p-4 border border-green-900/30">
+                <div className="font-semibold text-green-400 mb-2">Pixel to Practice</div>
                 <div className="text-left text-pacs-text-muted space-y-1">
                   <div>• Real-time analytics</div>
                   <div>• Measurable progress</div>
@@ -163,8 +200,9 @@ export default function Home() {
               {stats.hasData ? 'Practice More Cases' : 'Start Learning Now'} →
             </button>
           </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
