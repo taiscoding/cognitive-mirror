@@ -79,10 +79,7 @@ export default function PixelatedBackground() {
           
           // Cypress tree (dark vertical shape on left)
           const treeShape = Math.sin((yNorm - 0.3) * 20) * 0.05
-          const isCypress = (xNorm < 0.15 + treeShape && yNorm > 0.2 && yNorm < 0.75)
-          
-          // Village at bottom (small buildings)
-          const isVillage = (yNorm > 0.75 && Math.sin(xNorm * 30) > 0.3)
+          const isCypress = (xNorm < 0.15 + treeShape && yNorm > 0.2 && yNorm < 0.85)
           
           if (isMoon) {
             // Bright yellow-white moon
@@ -108,19 +105,6 @@ export default function PixelatedBackground() {
             r = Math.floor(15 + swirl * 20)
             g = Math.floor(25 + swirl * 25)
             b = Math.floor(20 + swirl * 20)
-          }
-          else if (isVillage) {
-            // Dark village buildings with warm lights
-            const hasLight = Math.sin(xNorm * 60) > 0.7
-            if (hasLight) {
-              r = Math.floor(200 + swirl * 30)
-              g = Math.floor(150 + swirl * 40)
-              b = Math.floor(50 + swirl * 30)
-            } else {
-              r = Math.floor(30 + swirl * 20)
-              g = Math.floor(35 + swirl * 25)
-              b = Math.floor(50 + swirl * 30)
-            }
           }
           else {
             // Swirling night sky with smooth vertical gradient
