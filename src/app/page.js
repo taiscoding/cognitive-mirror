@@ -38,7 +38,7 @@ export default function Home() {
           {/* Hero Section */}
           <div 
             ref={heroRef}
-            className="text-center mb-16 animate-fade-in px-6 py-8 rounded-2xl bg-pacs-bg/30 backdrop-blur-sm"
+            className="text-center mb-16 animate-fade-in"
             style={{
               transform: `translateY(${scrollY * 0.3}px)`,
               opacity: Math.max(0, 1 - scrollY / 500),
